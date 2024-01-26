@@ -41,21 +41,18 @@ public class TransactionServiceTest {
     public void FilterTransactions() {
         List<Transaction> transactions = new ArrayList<Transaction>();
 
-        List<Account> senderAccount = accountRepository.findAllByUserId(1L);
-        List<Account> receiverAccount = accountRepository.findAllByUserId(2L);
+        Account senderAccount = new Account();
+        senderAccount.setName("testSender");
+        senderAccount.setBalance(BigDecimal.valueOf(500));
 
-//        Account senderAccount = new Account();
-//        senderAccount.setName("testSender");
-//        senderAccount.setBalance(BigDecimal.valueOf(500));
-//
-//        Account receiverAccount = new Account();
-//        receiverAccount.setName("testReceiver");
-//        receiverAccount.setBalance(BigDecimal.valueOf(500));
+        Account receiverAccount = new Account();
+        receiverAccount.setName("testReceiver");
+        receiverAccount.setBalance(BigDecimal.valueOf(500));
 
         Transaction transaction1 = new Transaction();
         transaction1.setId(1);
-//        transaction1.setSenderAccount(senderAccount);
-//        transaction1.setReceiverAccount(receiverAccount);
+        transaction1.setSenderAccount(senderAccount);
+        transaction1.setReceiverAccount(receiverAccount);
         transaction1.setDescription("Test transaction");
         transaction1.setAmount(BigDecimal.valueOf(200));
         transaction1.setDateTime(new Date().toInstant());
@@ -64,8 +61,8 @@ public class TransactionServiceTest {
 
         Transaction transaction2 = new Transaction();
         transaction2.setId(2);
-//        transaction2.setSenderAccount(senderAccount);
-//        transaction2.setReceiverAccount(receiverAccount);
+        transaction2.setSenderAccount(senderAccount);
+        transaction2.setReceiverAccount(receiverAccount);
         transaction2.setDescription("Test transaction");
         transaction2.setAmount(BigDecimal.valueOf(200));
         transaction2.setDateTime(new Date().toInstant());
